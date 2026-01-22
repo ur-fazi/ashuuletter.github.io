@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashuu💞 Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#3b0020,#0b0010);
+  color:#fff;
+  overflow:hidden;
+}
+/* ===== ENVELOPE SCREEN ===== */
+#envelopeScreen{
+  position:absolute; inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:radial-gradient(circle at center,#ff8ad0,#3b0020);
+}
+#envelopeScreen button{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:20px;
+  background:#ff4fa3;
+  font-size:18px;
+  color:white;
+  cursor:pointer;
+}
+/* ===== PAGES ===== */
+.page{
+  position:absolute; inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:20px;
+}
+.page.active{display:flex;}
+.letter{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:30px;
+  max-width:700px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,0,150,.25);
+}
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:52px;
+  color:#ffb6e6;
+  text-shadow:0 0 20px rgba(255,0,170,.7);
+  margin-bottom:15px;
+}
+p{font-size:18px;line-height:1.7;color:#ffe6f5;}
+
+/* ===== GAME ===== */
+#game{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+#bow{
+  position:absolute;
+  left:20px;
+  bottom:40px;
+  width:90px;
+  height:200px;
+  border-left:6px solid #fff;
+  border-radius:0 0 0 200px;
+}
+#string{
+  position:absolute;
+  left:23px;
+  bottom:40px;
+  width:2px;
+  height:200px;
+  background:#ffb6e6;
+}
+#arrow{
+  position:absolute;
+  width:120px;
+  height:4px;
+  background:#fff;
+  left:30px;
+  bottom:140px;
+  transform-origin:left center;
+  display:none;
+}
+#arrow::after{
+  content:'';
+  position:absolute;
+  right:-10px;
+  top:-6px;
+  border-left:10px solid #fff;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+}
+/* HEART TARGET */
+#heart{
+  position:absolute;
+  top:60px;
+  right:40px;
+  font-size:70px;
+  animation:pulse 1.2s infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+/* HIT EFFECT */
+#hitText{
+  position:absolute; inset:0;
+  display:none; justify-content:center; align-items:center;
+  font-family:'Great Vibes',cursive;
+  font-size:64px; color:#ff9adf;
+  text-shadow:0 0 30px #ff2fb3;
+  animation:zoom 1.4s ease forwards;
+}
+@keyframes zoom{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+/* PARTICLES */
+.particle{
+  position:absolute;
+  width:8px;height:8px;
+  background:pink; border-radius:50%;
+  animation:float 3s linear forwards;
+}
+@keyframes float{to{transform:translateY(-120px);opacity:0}}
+/* RING BOX */
+#ringBox{
+  width:160px;height:120px;background:#8b004f;margin:20px auto;border-radius:12px;position:relative;cursor:pointer;
+  box-shadow:0 0 30px rgba(255,0,140,.6);
+}
+#ringBox::before{
+  content:'';position:absolute;inset:0;background:linear-gradient(#b10065,#5c0034);border-radius:12px;
+}
+#ring{display:none;font-size:46px;margin-top:15px;animation:ringPop .8s ease forwards;}
+@keyframes ringPop{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+button{margin-top:18px;padding:10px 22px;border:none;border-radius:20px;background:#ff4fa3;color:#fff;font-size:16px;}
+</style>
+</head>
+<body>
+
+<!-- ENVELOPE SCREEN -->
+<div id="envelopeScreen">
+  <h1>💌 A Letter for Ashuu 💞</h1>
+  <button onclick="openEnvelope()">Open Letter 💌</button>
+</div>
+
+<!-- GAME PAGE -->
+<div class="page" id="page0">
+  <div id="game">
+    <div id="bow"></div>
+    <div id="string"></div>
+    <div id="arrow"></div>
+    <div id="heart">💖</div>
+    <div id="hitText">Ashuu💞</div>
+  </div>
+</div>
+
+<script>
+/* LETTERS */
+const letters = [
+"Dear Ashuu💞, jab se tum meri zindagi me aai ho, har cheez me roshni si mehsoos hoti hai.",
+"Ye letter sirf alfaaz nahi, mere dil ki awaaz hai jo tum tak pohanch rahi hai.",
+"Tumhari muskurahat meri thakan mita deti hai, tumhara naam sukoon ban jata hai.",
+"Har raat dua me tumhara zikr hota hai, aur har subah umeed ban kar aati ho.",
+"Aisa lagta hai jaise qismat ne mujhe tum se milane ke liye sab likh diya tha.",
+"Tum meri kahani ka wo hissa ho jiske baghair end adhura lagta hai.",
+"Main perfect nahi, lekin tumhare liye hamesha real rahun gi.",
+"Agar haath tham lo to wada hai, kabhi chhoron gi nahi.",
+"Aaj is letter ke sath dil ka sab se bara sach likh rahi hun…",
+"💞 Kya tum meri zindagi ka hamesha ke liye hissa bano gi? 💞"
+];
+
+/* CREATE LETTER PAGES */
+letters.forEach((t,i)=>{
+  const d=document.createElement('div');
+  d.className='page';
+  d.id='page'+(i+1);
+  d.innerHTML=`<div class="letter"><h1>Ashuu💞</h1><p>${t}</p>
+    ${i===letters.length-1?`<div id="ringBox"></div><div id="ring">💍</div><p id="finalText"></p><button onclick="accept()">Accept 💖</button>`:''}
+  </div>`;
+  document.body.appendChild(d);
+});
+
+let current=0;
+
+/* ===== ENVELOPE FUNCTION ===== */
+function openEnvelope(){
+  document.getElementById('envelopeScreen').style.display='none';
+  document.getElementById('page0').classList.add('active');
+}
+
+/* ===== GAME LOGIC ===== */
+const arrow=document.getElementById('arrow');
+const hitText=document.getElementById('hitText');
+let dragging=false;
+
+document.addEventListener('touchstart',e=>{
+  if(current!==0)return;
+  dragging=true;
+  arrow.style.display='block';
+});
+document.addEventListener('touchmove',e=>{
+  if(!dragging)return;
+  const t=e.touches[0];
+  const angle=Math.atan2(
+    (window.innerHeight-140)-t.clientY,
+    t.clientX-30
+  );
+  arrow.style.transform=`rotate(${angle}rad)`;
+});
+document.addEventListener('touchend',()=>{
+  if(!dragging)return;
+  dragging=false;
+  hit();
+});
+
+function hit(){
+  arrow.style.display='none';
+  hitText.style.display='flex';
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.left='50%';
+    p.style.top='50%';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),3000);
+  }
+  setTimeout(()=>{nextPage();},1600);
+}
+
+function nextPage(){
+  document.getElementById('page'+current).classList.remove('active');
+  current++;
+  document.getElementById('page'+current).classList.add('active');
+}
+
+/* ===== ACCEPT RING ===== */
+function accept(){
+  document.getElementById('ring').style.display='block';
+  document.getElementById('finalText').innerHTML=
+  "Tumhari haan meri zindagi ka sab se khoobsurat lamha hai ❤️<br><b>I Love You Ashuu💞</b>";
+}
+</script>
+</body>
+</html>
